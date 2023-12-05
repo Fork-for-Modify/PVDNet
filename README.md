@@ -88,7 +88,7 @@ $ sh install_CUDA11.3.sh
 
 #### 2. Datasets
 Download and unzip datasets under `[DATASET_ROOT]`:
-* Su *et al.*'s dataset: [Google Drive](https://drive.google.com/open?id=1OY3mHiDbhCfVmwPA_gqckRDp4Ekryh7d&authuser=codeslake%40gmail.com&usp=drive_fs) \| [Dropbox](https://www.dropbox.com/s/8daduee9igqx5cw/DVD.zip?dl=1) 
+* Su *et al.*'s dataset: [Google Drive](https://drive.google.com/open?id=1OY3mHiDbhCfVmwPA_gqckRDp4Ekryh7d&authuser=codeslake%40gmail.com&usp=drive_fs) \| [Dropbox](https://www.dropbox.com/s/8daduee9igqx5cw/DVD.zip?dl=1)
 * Nah *et al.*'s dataset: [Google Drive](https://drive.google.com/open?id=1O_VHISCRlff0gmfIqBnAr0RupvVUrJ9j&authuser=codeslake%40gmail.com&usp=drive_fs) \| [Dropbox](https://www.dropbox.com/s/5ese6qtbwy7fsoh/nah.zip?dl=1)
 
 ```
@@ -123,11 +123,11 @@ that first aligns two images using global translation to represent the ambiguity
 
 ```shell
 ## Table 4 in the main paper (Evaluation on Su etal's dataset)
-# Our final model 
+# Our final model
 CUDA_VISIBLE_DEVICES=0 python run.py --mode PVDNet_DVD --config config_PVDNet --data DVD --ckpt_abs_name ckpt/PVDNet_DVD.pytorch
 
 ## Table 5 in the main paper (Evaluation on Nah etal's dataset)
-# Our final model 
+# Our final model
 CUDA_VISIBLE_DEVICES=0 python run.py --mode PVDNet_nah --config config_PVDNet --data nah --ckpt_abs_name ckpt/PVDNet_nah.pytorch
 
 # Larger model
@@ -142,7 +142,7 @@ CUDA_VISIBLE_DEVICES=0 python run.py --mode PVDNet_large_nah --config config_PVD
 #### options
 * `--data`: The name of a dataset to evaluate: `DVD` | `nah` | `random`. Default: `DVD`
     * The data structure can be modified in the function [`set_eval_path(..)`](https://github.com/codeslake/PVDNet/blob/main/configs/config.py#L120-133) in `./configs/config.py`.
-    * `random` is for testing models with any video frames, which should be placed as `[DATASET_ROOT]/random/[video_name]/*.[jpg|png]`. 
+    * `random` is for testing models with any video frames, which should be placed as `[DATASET_ROOT]/random/[video_name]/*.[jpg|png]`.
 
 ## Wiki
 * [Logging](https://github.com/codeslake/PVDNet/wiki/Log-Details)

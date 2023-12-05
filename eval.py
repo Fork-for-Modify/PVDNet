@@ -75,7 +75,7 @@ def eval_quan_qual(config):
     for i in range(len(blur_file_path_list)):
         ## read frame
         frame_list = []
-        video_name = blur_folder_path_list[i].split(os.sep)[-2]
+        video_name = blur_folder_path_list[i].split(os.sep)[-1]
         print('[Reading Frames: {}][{}/{}]'.format(video_name, i + 1, len(blur_file_path_list)))
         for frame_name in blur_file_path_list[i]:
             frame = refine_image(read_frame(frame_name), config.refine_val)
@@ -127,8 +127,8 @@ def eval_quan_qual(config):
             inp = norm(I_center)
             output = norm(out['result'])
 
-            PSNR = 0 
-            SSIM = 0 
+            PSNR = 0
+            SSIM = 0
             if gt_file_path_list is not None:
                 gt = norm(torch.FloatTensor(frame_list_gt[j][0]).cuda())
 
@@ -149,22 +149,22 @@ def eval_quan_qual(config):
                 file.close()
 
             # qualitative
-            for iformat in ['png', 'jpg']:
+            for iformat in ['png']: # zzh:['png', 'jpg']
                 frame_name_no_ext = frame_name.split('.')[0]
                 save_path_deblur = os.path.join(save_path_root_deblur, iformat)
                 Path(save_path_deblur).mkdir(parents=True, exist_ok=True)
 
-                Path(os.path.join(save_path_deblur, 'input', video_name)).mkdir(parents=True, exist_ok=True)
-                save_file_path_deblur_input = os.path.join(save_path_deblur, 'input', video_name, '{}.{}'.format(frame_name_no_ext, iformat))
+                Path(os.path.join(save_path_deblur, video_name, 'input')).mkdir(parents=True, exist_ok=True)
+                save_file_path_deblur_input = os.path.join(save_path_deblur, video_name, 'input', '{}.{}'.format(frame_name_no_ext, iformat))
                 vutils.save_image(inp, '{}'.format(save_file_path_deblur_input), nrow=1, padding = 0, normalize = False)
 
-                Path(os.path.join(save_path_deblur, 'output', video_name)).mkdir(parents=True, exist_ok=True)
-                save_file_path_deblur_output = os.path.join(save_path_deblur, 'output', video_name, '{}.{}'.format(frame_name_no_ext, iformat))
+                Path(os.path.join(save_path_deblur, video_name, 'output')).mkdir(parents=True, exist_ok=True)
+                save_file_path_deblur_output = os.path.join(save_path_deblur, video_name, 'output', '{}.{}'.format(frame_name_no_ext, iformat))
                 vutils.save_image(output, '{}'.format(save_file_path_deblur_output), nrow=1, padding = 0, normalize = False)
 
                 if gt_file_path_list is not None:
-                    Path(os.path.join(save_path_deblur, 'gt', video_name)).mkdir(parents=True, exist_ok=True)
-                    save_file_path_deblur_gt = os.path.join(save_path_deblur, 'gt', video_name, '{}.{}'.format(frame_name_no_ext, iformat))
+                    Path(os.path.join(save_path_deblur, video_name, 'gt')).mkdir(parents=True, exist_ok=True)
+                    save_file_path_deblur_gt = os.path.join(save_path_deblur, video_name, 'gt', '{}.{}'.format(frame_name_no_ext, iformat))
                     vutils.save_image(gt, '{}'.format(save_file_path_deblur_gt), nrow=1, padding = 0, normalize = False)
 
 

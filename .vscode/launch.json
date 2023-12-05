@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: test",
+            "type": "python",
+            "request": "launch",
+            "program": "run.py",
+            "console": "integratedTerminal",
+            "env": {"CUDA_VISIBLE_DEVICES": "0"},
+            "args": ["--mode", "PVDNet_nah", "--config", "config_PVDNet_inr" ,"--data", "nah" ,"--ckpt_abs_name" ,"ckpt/PVDNet_nah.pytorch"],
+            "justMyCode": false
+        },
+        {
+            "name": "Python: train",
+            "type": "python",
+            "request": "launch",
+            "program": "run.py",
+            "console": "integratedTerminal",
+            "env": {"CUDA_VISIBLE_DEVICES": "0"},
+            "args": ["--is_train", "--mode", "PVDNet_nah", "--config" ,"config_PVDNet_inr", "--trainer" ,"trainer" ,"--data", "nah", "-LRS", "CA", "-b", "2", "-th", "8", "-dl", "-ss"],
+            "justMyCode": false
+        }
+    ]
+}

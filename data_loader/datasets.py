@@ -81,7 +81,7 @@ class datasets(data.Dataset):
         for frame_idx in range(len(sampled_frame_idx)):
             sampled_idx = sampled_frame_idx[frame_idx]
 
-            assert(get_folder_name(str(Path(input_file_path[sampled_idx]).parent)) == get_folder_name(str(Path(gt_file_path[sampled_idx]).parent)))
+            # assert(get_folder_name(str(Path(input_file_path[sampled_idx]).parent)) == get_folder_name(str(Path(gt_file_path[sampled_idx]).parent))) # zzh
             assert(get_base_name(input_file_path[sampled_idx]) == get_base_name(gt_file_path[sampled_idx]))
 
             input_img = read_frame(input_file_path[sampled_idx])

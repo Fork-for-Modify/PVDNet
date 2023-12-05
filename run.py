@@ -198,7 +198,7 @@ if __name__ == '__main__':
     project = 'PVDNet_TOG2021'
     mode = 'PVDNet_DVD'
 
-    from configs.config import set_train_path
+    from configs.config_inr import set_train_path
     import importlib
     import argparse
 
@@ -296,7 +296,7 @@ if __name__ == '__main__':
 
     else:
         from eval import *
-        from configs.config import get_config, set_eval_path
+        from configs.config_inr import get_config, set_eval_path
         from easydict import EasyDict as edict
         print(toGreen('Laoding Config for evaluation'))
         if args.config is None:
